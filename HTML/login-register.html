@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="/CSS/template.css">
+  <title>Login Page</title>
+</head>
+<body>
+  <div id="wep-App"></div>
+  <div id="tempo-Web">
+    <div class="login-register-container">
+
+      <div class="login-form-container">
+       <div class="login-register-switch-container">
+        <h1 class="login-register-switch">Login</h1>
+       </div>
+      <p class="error-message"></p>
+      <p class="success-message"></p>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username"
+          placeholder="username" required>
+          <span class="material-symbols-outlined">person</span>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password"
+          placeholder="password" required>
+          <span class="material-symbols-outlined">lock</span>
+          <div class="show-hide-password">
+           <span class="material-symbols-outlined" id="loginVisibility">visibility</span>
+           <span class="material-symbols-outlined" id="loginVisibilityOff">visibility_off</span>
+         </div>
+        </div>
+        <div class="rember-forget-container">
+          <div class="rember">
+            <input type="checkbox" id="rememberMe" name="rememberMe">
+            <label for="rememberMe">Remember Me</label>
+          </div>
+          <div class="forget">
+            <a href="/HTML/forgot-password.html">Forgot Password?</a>
+          </div>
+        </div>
+        <div class="submit-button">
+          <button type="submit">Login</button>
+         </div>
+        </form>
+        <div class="register-login-switch-container">
+         <h1 class="register-login-switch">Register</h1>
+        </div>
+    </div>
+    <div class="register-container">
+      <form id="registerForm">
+        <div class="form-group">
+          <div class="first-name-and-last-name">
+            <div class="first-name">
+              <label for="firstName">First Name:</label>
+              <input type="text" id="firstName" name="firstName"
+              placeholder="first name" required>
+              <span class="material-symbols-outlined">person</span>
+            </div>
+            <div class="last-name">
+              <label for="lastName">Last Name:</label>
+              <input type="text" id="lastName" name="lastName"
+              placeholder="last name" required>
+              <span class="material-symbols-outlined">person</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="email-and-phone">
+            <div class="email">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email"
+              placeholder="email" required>
+              <span class="material-symbols-outlined">email</span>
+            </div>
+            <div class="phone">
+              <label for="phone">Phone:</label>
+              <input type="tel" id="phone" name="phone"
+              placeholder="phone" required>
+              <span class="material-symbols-outlined">phone</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="password-and-confirm-password">
+            <div class="password">
+              <label for="password">Password:</label>
+              <input type="password" id="RegisretPassword" name="password"
+              placeholder="password" required>
+              <span class="material-symbols-outlined">lock</span>
+            </div>
+            <div class="confirm-password">
+              <label for="confirmPassword">Confirm Password:</label>
+              <input type="password" id="confirmPassword" name="confirmPassword"
+              placeholder="confirm password" required>
+              <span class="material-symbols-outlined">lock</span>
+              <div class="show-hide-password">
+                <span class="material-symbols-outlined" id="confirmVisibility">visibility</span>
+                <span class="material-symbols-outlined" id="confirmVisibility_off">visibility_off</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <div class="terms-and-conditions">
+              <input type="checkbox" id="terms" name="terms" required>
+              <label for="terms">I agree to the terms and conditions</label>
+          </div>
+        </div>
+        <div class="submit-button">
+          <button type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+    <div class="back-to-home">
+      <a href="/HTML/index.html">Back to Home</a>
+    </div>
+  </div>
+ </div>
+  <script type="module" src="/JS/login-register.js"></script>
+</body>
+</html>

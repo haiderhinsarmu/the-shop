@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+ <link rel="stylesheet" href="/CSS/template.css">
+ <title>Cart Page</title>
+</head>
+<body>
+ <div id="wep-App"></div>
+ <div id="tempo-Web">
+  <div class="cartItem-container">
+   <h1>Your Shopping Cart</h1>
+   <div class="cartItem-header">
+   <div class="cartItem-Wrapper">
+    <div class="cartItem-item">
+      <div class="item-image">
+       <img src="/NEWARIVALSIMGS/Air_Jordan_1 (1).png" alt="pic">
+      </div>
+      <div class="item-description">
+       <div class="item-title">
+        <p>Air Jordan 1 Retro High OG</p>
+       </div>
+       <div class="item-size">
+        <p>Size: 40</p>
+       </div>
+        <div class="item-price">
+         <p>price: $150.00</p>
+        </div>
+        <div class="item-wishlist">
+          <span class="material-symbols-outlined">
+               favorite_border
+           </span>
+      </div>
+        <div class="item-delete">
+         <span id="delete" class="material-symbols-outlined">
+          delete
+         </span>
+        </div>
+       <div class="item-quantity">
+        <div class="quantity-decrease">
+         <span id="decrease" class="material-symbols-outlined">
+          remove_circle_outline
+         </span>
+        </div>
+        <div class="quantity">
+         <p id="quantity">1</p>
+        </div>
+        <div class="quantity-increase">
+         <span id="increase" class="material-symbols-outlined">
+          add_circle_outline
+         </span>
+        </div>
+       </div>
+     </div>
+    </div>
+    </div>
+   <div class="total-container">
+    <h2>total Order</h2>
+    <div class="total-wraper">
+     <div class="total-item">
+      <div class="total-quantity">
+       <p id="Total-Quantity">Total Quantity: 1</p>
+      </div>
+      <div class="total-price">
+       <p id="Total-Price">Total Price: $150.00</p>
+      </div>
+      <div class="checkout">
+       <a href="/HTML/checkout.html">
+        <p>Checkout</p>
+       </a>
+      </div>
+     </div>
+    </div>
+    <div class="back-to-home">
+      <a href="/HTML/index.html">Back to Home</a>
+    </div>
+   </div>
+  </div>
+  </div>
+ </div>
+ <script type="module" src="/JS/cart.js"></script>
+</body>
+</html>

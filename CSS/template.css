@@ -1,0 +1,4243 @@
+@font-face {
+ font-family: 'nasalization, sans-serif';
+ src: url('/FONTS/nasalization-rg.otf') format('opentype');
+}
+
+* {
+ margin: 0;
+ padding: 0;
+ text-decoration: none;
+ box-sizing: border-box;
+ font-family: 'nasalization', sans-serif;
+}
+
+
+
+body {
+ width: 100%;
+ height: 100%;
+ overflow-x: hidden;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+
+.container {
+ width: 100%;
+ height: 100%;
+ background: linear-gradient(45deg,  hsl(0, 100%, 50%, 0.3),
+  hsl(41, 100%, 50%, 0.3),
+   hsla(107, 100%, 7%, 0.3),
+ hsl(228, 100%, 50%, 0.3),
+  hsl(0, 100%, 50%, 0.3),
+   hsl(41, 100%, 50%, 0.3));
+}
+
+.header {
+  width: 100%;
+  height: 20vh;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-rows: repeat(2, 1fr);
+  margin-bottom: 2rem;
+  transition: transform 2s ease; 
+  animation: setTop 1s ease;
+  position: relative;
+}
+
+@keyframes setTop {
+ 0% { transform: translateY(-20vh); }
+ 100% { transform: translateY(0); }
+}
+
+.header.fixed {
+ top: 0;
+ left: 0;
+ z-index: 1000;
+ position: fixed;
+ background-color: rgb(255, 255, 255, 0.5);
+ box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+
+.header-container {
+ width: 95%;
+ margin: auto;
+ height: 13vh;
+ display: grid;
+ align-items: center;
+ justify-content: center;
+ grid-template-columns: repeat(3, 1fr);
+}
+
+.header-container .header-logo {
+ display: flex;
+ padding: 0.5rem 1rem;
+ border-radius: 999px;
+ align-items: center;
+ justify-content: center;
+ border: 2px solid lightslategray;
+ box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.header-container .header-logo a {
+ display: flex;
+ font-size: 1.5rem;
+ align-items: center;
+ text-decoration: none;
+ letter-spacing: 5px;
+ text-transform: uppercase;
+ background:  -webkit-radial-gradient(#0ef, #e0f);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ }
+
+
+ .header-container .header-logo a span {
+  background: linear-gradient(#000, #0ef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-left: 5px;
+  transition: .3s ease;
+ }
+
+ .header-container .header-logo a:hover {
+  transform: scale(1.01);
+ }
+
+ .header-container .search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+ 
+ .header-container .search-container form {
+  width: 300px;
+  height: 35px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  border-radius: 9px;
+  justify-content: center;
+  border: 2px solid lightslategray;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .header-container .search-container form input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  letter-spacing: 2px;
+  background-color: transparent;
+}
+
+.header-container .search-container form input::placeholder {
+  background: linear-gradient(#f00, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ }
+ 
+ .header-container .search-container form .material-symbols-outlined:hover {
+  color: #025e75;
+}
+
+.header-container .search-container form .material-symbols-outlined {
+  top: 50%;
+  right: 0%;
+  font-size: 2rem;
+  position: absolute;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #505050;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0, 0.5);
+ }
+
+ .header-container .header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+ .header-container .header-nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+ 
+ .header-container .header-nav ul li {
+  list-style-type: none;
+  margin-right: 0.5rem;
+  border-radius: 9px;
+  border: 2px solid lightslategray;
+  padding: 0.5rem 1rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+.header-container .header-nav ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  letter-spacing: 3px;
+  z-index: 100;
+  background: linear-gradient(#000, #e0f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.header-container .header-nav ul li::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease;
+  background-color: #838080;
+}
+
+.header-container .header-nav ul li:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+
+.header-container .header-nav .login-cart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-container .header-nav .login-cart-container .login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-container .header-nav .login-cart-container .login-container .login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-container .header-nav .login-cart-container .login-container .login .material-symbols-outlined {
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #505050;
+}
+
+.header-container .header-nav .login-cart-container .login-container .login:hover {
+  transform: scale(1.05);
+}
+
+.header-container .header-nav .login-cart-container .login-container .user-container {
+  display: none;
+  justify-content: center;
+  border: 2px solid #838080;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: 0.3s ease;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .header-container .header-nav .login-cart-container .user-container.active {
+  display: flex;
+ }
+
+ .header-container .header-nav .login-cart-container .user-container:hover {
+  transform: scale(1.05);
+ }
+
+ .header-container .header-nav .login-cart-container .user-container  a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  background: linear-gradient(#0ef, #e0f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  align-items: center;
+  transition: 0.3s ease;
+  text-shadow: 10px 10px 30px rgba(184, 181, 181, 0.5);
+ }
+ 
+ .header-container .header-nav .login-cart-container .cart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+ }
+ 
+ .header-container .header-nav .login-cart-container  .cart-container .material-symbols-outlined {
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #505050;
+  text-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+ }
+ 
+ .header-container .header-nav .login-cart-container .cart-container .cart-count {
+  font-size: 1.2rem;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #f00;
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 50%;
+  box-shadow: 10px 10px 30px rgba(136, 136, 136, 0.5);
+ }
+
+
+/*********************************** user page ***********************/
+
+
+.user-account-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.user-account-container .container-top {
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.user-account-container .container-top h2 {
+  font-size: 1.5rem;
+  color: #000;
+  letter-spacing: 2px;
+  margin-right: 0.5rem;
+}
+
+.user-account-container .container-top .material-symbols-outlined {
+  font-size: 2rem;
+  color: #524f4f;
+  font-weight: 600;
+}
+
+.user-account-container .user-wraper {
+  width: 80%;
+  height: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.user-account-container .back-to-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.user-account-container .back-to-home a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  border: 2px solid #838080;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  transition: .3s ease;
+}
+
+.user-account-container .back-to-home a:hover {
+  background-color: #32b767;
+  color: #fff;
+}
+
+.user-account-container .back-to-home a:active {
+  transform: translateY(3px);
+}
+
+.user-account-container .user-wraper .user-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  line-height: 1.5;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.user-account-container .user-wraper .user-item .user-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-account-container .user-wraper .user-item .user-image img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 99px;
+  border: 2px solid #838080;
+}
+
+.user-account-container .user-wraper .user-item .user-logout ,
+.user-account-container .user-wraper .user-item .user-edit ,
+.user-account-container .user-wraper .user-item .user-wishlist ,
+.user-account-container .user-wraper .user-item .user-notification ,
+.user-account-container .user-wraper .user-item .user-order ,
+.user-account-container .user-wraper .user-item .user-name {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  align-items: center;
+  transition: .3s ease;
+  justify-content: space-between;
+  background-color: #45dfb1;
+}
+
+
+.user-account-container .user-wraper .user-item .user-logout:hover,
+.user-account-container .user-wraper .user-item .user-edit:hover,
+.user-account-container .user-wraper .user-item .user-wishlist:hover,
+.user-account-container .user-wraper .user-item .user-notification:hover,
+.user-account-container  .user-wraper .user-item .user-order:hover,
+.user-account-container .user-wraper .user-item .user-name:hover {
+  background-color: #32b767;
+  transform: translateY(2px);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.user-account-container .user-wraper .user-item .user-logout:active,
+.user-account-container .user-wraper .user-item .user-edit:active,
+.user-account-container .user-wraper .user-item .user-wishlist:active,
+.user-account-container .user-wraper .user-item .user-notification:active,
+.user-account-container .user-wraper .user-item .user-order:active,
+.user-account-container .user-wraper .user-item .user-name:active{
+  transform: translateY(5px);
+}
+
+
+.user-account-container .user-wraper .user-item .user-logout .material-symbols-outlined,
+.user-account-container .user-wraper .user-item .user-edit .material-symbols-outlined,
+.user-account-container .user-wraper .user-item .user-wishlist .material-symbols-outlined,
+.user-account-container .user-wraper .user-item .user-notification .material-symbols-outlined,
+.user-account-container .user-wraper .user-item .user-order .material-symbols-outlined,
+.user-account-container .user-wraper .user-item .user-name .material-symbols-outlined {
+  font-size: 2rem;
+  color: #524f4f;
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  margin-right: 0.2rem;
+}
+
+.user-account-container .user-wraper .user-item .user-logout p,
+.user-account-container .user-wraper .user-item .user-edit p,
+.user-account-container .user-wraper .user-item .user-wishlist p,
+.user-account-container .user-wraper .user-item .user-notification p,
+.user-account-container .user-wraper .user-item .user-order p,
+.user-account-container .user-wraper .user-item .user-name p {
+  font-size: 1.2rem;
+  color: #000;
+  letter-spacing: 2px;
+  cursor: pointer;
+  align-items: center;
+  text-transform: capitalize;
+  transition:.3s ease;
+}
+
+.user-account-container .user-wraper .user-item .user-logout p:hover,
+.user-account-container .user-wraper .user-item .user-edit p:hover,
+.user-account-container .user-wraper .user-item .user-wishlist p:hover,
+.user-account-container .user-wraper .user-item .user-notification p:hover,
+.user-account-container .user-wraper .user-item .user-order p:hover,
+.user-account-container .user-wraper .user-item .user-name p:hover{
+  color: #fff;
+}
+
+
+/************************ logout page ****************************/
+
+.logout-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  line-height: 2;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.logout-container h1 {
+  font-size: 3rem;
+  color: #000;
+  letter-spacing: 2px;
+}
+
+.logout-container p {
+  font-size: 1.5rem;
+  color: #524f4f;
+  letter-spacing: 2px;
+}
+
+.logout-container a {
+  font-size: 1.2rem;
+  color: #000;
+  letter-spacing: 2px;
+  text-decoration: none;
+  margin-top: 2rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 2px solid #838080;
+  transition: .3s ease;
+}
+
+.logout-container a:hover {
+  background-color: #32b767;
+  color: #fff;
+}
+
+
+/******************************** edit profile page ***************/
+
+.edit-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.edit-container h1 {
+  font-size: 2rem;
+  color: #000;
+  letter-spacing: 2px;
+  margin: 2rem 0;
+}
+
+.edit-container .edit-wraper {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  box-shadow: 10px 10px 30px rgb(0, 0, 0, 0.2);
+}
+
+.edit-container .edit-wraper form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  justify-content: center;
+}
+
+.edit-container .edit-wraper form .form-control {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.edit-container .edit-wraper form .form-control label {
+  font-size: 1.2rem;
+  color: #000;
+  display: flex;
+  width: 100%;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  align-items: flex-start;
+}
+
+
+.edit-container .edit-wraper form .form-control input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  background-color: transparent;
+  border-bottom: 2px solid #838080;
+}
+
+.edit-container .edit-wraper form .form-control input:focus {
+  border-bottom: 2px solid #0ef;
+}
+
+.edit-container .edit-wraper form .form-control button {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 999px;
+  letter-spacing: 3px;
+  border: 2px solid #838080;
+  background-color: transparent;
+  transition:.3s ease;
+}
+
+.edit-container .edit-wraper form .form-control button:hover {
+  background-color: #32b767;
+  color: #fff;
+}
+
+.edit-container .edit-wraper form .form-control button:active {
+  transform: translateY(5px);
+}
+
+.back-to-user-account { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-to-user-account a {
+  font-size: 1.2rem;
+  color: #000;
+  letter-spacing: 2px;
+  border-radius: 999px;
+  border: 2px solid #838080;
+  background-color: transparent;
+  transition:.3s ease;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.back-to-user-account a:hover {
+  background-color: #32b767;
+  color: #fff;
+}
+
+.back-to-user-account a:active {
+  transform: translateY(5px);
+}
+
+/*************************** ordered item page *********************/
+
+.ordered-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.ordered-container h2 {
+  font-size: 1.5rem;
+  color: #000;
+  margin: 1rem 0;
+  letter-spacing: 3px;
+}
+
+.ordered-container p {
+  font-size: 1.5rem;
+  color: #524f4f;
+  letter-spacing: 2px;
+  margin: 1rem 0;
+}
+
+.ordered-container  .ordered-Wrapper {
+  width: 90%;
+  display: grid;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.ordered-container .ordered-Wrapper .ordered-item {
+  display: flex;
+  padding: 1rem;
+  margin: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 10px 10px 30px rgb(0, 0, 0, 0.2);
+}
+
+.ordered-container .ordered-Wrapper .ordered-item .item-image {
+  width: 150px;
+  height: 150px;
+  margin-right: 1rem;
+  box-shadow: 10px 10px 30px rgb(0, 0, 0, 0.2);
+}
+
+.ordered-container .ordered-Wrapper .ordered-item .item-image a {
+  display: flex;
+}
+
+.ordered-container .ordered-Wrapper .ordered-item .item-image img {
+  width: 150px;
+  height: 100%;
+  padding: 1rem;
+  object-fit: cover;
+}
+
+.ordered-container .ordered-Wrapper .ordered-item .item-description {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.ordered-container .ordered-Wrapper .ordered-item .item-description ,
+.ordered-container .ordered-Wrapper .ordered-item .item-description ,
+.ordered-container .ordered-Wrapper .ordered-item .item-description  {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.ordered-container .ordered-Wrapper .ordered-item .item-description  p,
+.ordered-container .ordered-Wrapper .ordered-item .item-description p,
+.ordered-container .ordered-Wrapper .ordered-item .item-description  p {
+  color: #000;
+  width: 100%;
+  letter-spacing: 2px;
+  background-color: rgb(90, 85, 85, 0.1);
+}
+
+
+.ordered-container   .total-item  {
+  display: flex;
+  width: 100%;
+  margin-top: 3rem;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.ordered-container .total-item .total-price ,
+.ordered-container .total-item .total-quantity  {
+  display: flex;
+}
+
+.ordered-container  .total-item .total-price p,
+.ordered-container  .total-item .total-price p {
+  color: #000;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+}  
+
+.ordered-container .back-to-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 2rem 0;
+  padding: 0.5rem 1rem;
+  letter-spacing: 2px;
+  border-radius: 999px;
+  border: 2px solid #838080;
+  background-color: transparent;
+  transition:.3s ease;
+}
+
+.ordered-container .back-to-home:hover {
+  color: #fff;
+  background-color: #32b767;
+}
+
+.ordered-container .back-to-home:active {
+  transform: translateY(5px);
+}
+
+.back-to-user-account { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-to-user-account a {
+  font-size: 1.2rem;
+  color: #000;
+  letter-spacing: 2px;
+  border-radius: 999px;
+  border: 2px solid #838080;
+  background-color: transparent;
+  transition:.3s ease;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.back-to-user-account a:hover {
+  background-color: #32b767;
+  color: #fff;
+}
+
+.back-to-user-account a:active {
+  transform: translateY(5px);
+}
+
+.cart-empty {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #000;
+}
+
+.cart-empty p {
+  font-size: 1.5rem;
+  color: #524f4f;
+  letter-spacing: 2px;
+  margin: 1rem 0;
+}
+
+
+/****************************** wishlist list page ******************/
+
+.wishlists-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.wishlists-container h2 {
+  font-size: 1.5rem;
+  color: #000;
+  margin: 1rem 0;
+  display: flex;
+  width: 100%;
+  letter-spacing: 3px;
+  justify-content: center;
+}
+
+.wishlists-container  .wishlists-wrapper {
+  width: 90%;
+  display: grid;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.wishlists-container  .wishlists-wrapper .wishlists-item {
+  display: flex;
+  padding: 1rem;
+  margin: 0.5rem;
+  box-shadow: 10px 10px 30px rgb(0, 0, 0, 0.2);
+}
+
+.wishlists-container  .wishlists-wrapper .wishlists-item a {
+  display: flex;
+  align-items: center;
+}
+
+
+.wishlists-container  .wishlists-wrapper .wishlists-item .item-image {
+  width: 150px;
+  margin-right: 1rem;
+  cursor: pointer;
+  box-shadow: 10px 10px 30px rgb(0, 0, 0, 0.2);
+}
+
+.wishlists-container  .wishlists-wrapper .wishlists-item .item-image img {
+  width: 150px;
+  padding: 1rem;
+  object-fit: cover;
+}
+
+.wishlists-container  .wishlists-wrapper .wishlists-item .item-details {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 10px 10px 30px rgb(0, 0, 0, 0.2);
+}
+
+.wishlists-container  .wishlists-wrapper .wishlists-item .item-details h2 {
+  color: #000;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.wishlists-container  .wishlists-wrapper .wishlists-item .item-details p {
+  color: #000;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.wishlists-container  .wishlists-wrapper .wishlists-item .item-details button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin:  1rem 0;
+  padding: 0.5rem 1rem;
+  letter-spacing: 2px;
+  border-radius: 999px;
+  border: 2px solid #838080;
+  background-color: transparent;
+  transition:.3s ease;
+  cursor: pointer;
+}
+
+.wishlists-container  .wishlists-wrapper .wishlists-item .item-details button:hover {
+  color: #fff;
+  background-color: #32b767;
+}
+
+.back-to-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+} 
+
+.back-to-home a{
+  color: #000;
+  text-decoration: none;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  transition:.3s ease;
+  cursor: pointer;
+  border: 2px solid #838080;
+  background-color: transparent;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+}
+
+.back-to-home a:hover {
+  color: #fff;
+  background-color: #32b767;
+}
+
+.back-to-home a:active {
+  transform: translateY(3px);
+}
+
+
+.empty-wishlists {
+  display: flex;
+  height: 100%;
+  line-height: 2;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.empty-wishlists p {
+  color: #000;
+  font-size: 1.5rem;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+
+/********************************* buttom header ********************/
+
+
+
+ .bottom-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+
+.bottom-header .bottom-header-item {
+  width: 95%;
+  height: 7vh;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+ .bottom-header .bottom-header-item ul {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+ 
+ .bottom-header .bottom-header-item ul li {
+  cursor: pointer;
+  font-size: 17px;
+  letter-spacing: 3px;
+  padding: 0.5rem 1rem;
+  list-style-type: none;
+  text-transform: uppercase;
+  transition: .3s ease;
+ }
+
+ .bottom-header .bottom-header-item ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .3s ease;
+  background: linear-gradient(#000, #f00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+  }
+ 
+ .bottom-header .bottom-header-item ul li:hover {
+  background-color: #026077;
+  border-radius: 999px;
+ }
+ 
+ .bottom-header .bottom-header-item ul li a:hover {
+  color: #fff;
+ }
+
+ .bottom-header .bottom-header-item .buttom-header-link.active {
+  background-color: #009fc7;
+  border-radius: 999px;
+ }
+
+
+ /********************************* hero section ****************************/
+ 
+
+ .hero-section-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: setOFF 2s ease;
+  position: relative;
+ }
+ 
+ @keyframes setOFF {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    display: flex;
+    opacity: 1;
+  }
+ }
+
+
+ .hero-section-container .hero-section-content {
+  width: 95%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  border-radius: 9px;
+  align-items: center;
+  margin-bottom: 3rem;
+  border: 2px solid #838080;
+  justify-content: space-between;
+  position: relative;
+ }
+ 
+ .hero-section-container .hero-section-content .hero-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around; 
+ }
+ 
+ .hero-section-container .hero-section-content .hero-item .hero-text {
+  display: flex;
+  width: 500px;
+  height: 250px;
+  border-radius: 9px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+ }
+ 
+ .hero-section-container .hero-section-content .hero-text h1 {
+  font-size: 2rem;
+  background: linear-gradient(#0ef, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 2rem 0rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: slideBack 3s ease;
+  animation-delay: .5s;
+  text-shadow: 10px 10px 30px rgba(209, 207, 207, 0.1);
+ }
+ 
+ @keyframes slideBack {
+  0% {
+     transform: translateX(100%);
+   }
+   100% {
+     transform: translateX(0);
+     opacity: 1;
+   }
+ }
+ 
+ .hero-section-container .hero-section-content .hero-text p {
+  font-size: 1.2rem;
+  animation: backToplace  3s ease;
+  animation-delay: .3s;
+  line-height: 2;
+  text-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+ }
+
+ @keyframes backToplace {
+   0% {
+     transform: translateX(-100%);
+     opacity: 0;
+   }
+   100% {
+     transform: translateX(0);
+     opacity: 1;
+   }
+ }
+
+
+.hero-section-container .hero-section-content .hero-image {
+  display: flex;
+  width: 300px;
+  height: 300px;
+  margin: 5rem 0rem;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  border-radius: 2rem 1rem;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+  transition: 1s ease;
+}
+
+.hero-section-container .hero-section-content .hero-image img {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  rotate: 330deg;
+  animation-delay: .1s ;
+  animation: slide 4s ease;
+}
+
+@keyframes slide {
+  0% {
+    transform: scale(5) translate(-50%, -50%);
+   
+  }
+  100% {
+    transform: scale(1) translate(0%, 0%);
+  
+  }
+}
+
+
+/***************************  search result container *************************/
+
+
+.result-container {
+  left: 0;
+  top: 100%;
+  bottom: 0;
+  width: 100%;
+  display: none;
+  z-index: 1000;
+  height: 510px;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffff;
+  transform: translateX(100%);
+  transition: 1s ease;
+  opacity: 0;
+  z-index: -1000;
+  visibility: hidden;
+}
+
+.open.result-container {
+  top: 100%;
+  display: flex;
+  transform: translateX(0);
+  opacity: 1;
+  z-index: 1000;
+  visibility: visible;
+}
+
+.result-container h4 {
+  font-size: 1.2rem;
+  color: #000;
+  margin: 1rem 0rem;
+}
+
+.result-container .result-wraper {
+  width: 95%;
+  height: 100%;
+  display: flex;
+  gap: 1rem;
+  overflow-y: auto;
+  flex-direction: column;
+}
+
+.result-container .result-wraper .result-item {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid #838080;
+  border-top: 2px solid #838080;
+  cursor: pointer;
+}
+
+.result-container .result-wraper .result-item a {
+  display: flex;
+  width: 100%;
+  text-decoration: none;
+  justify-content: space-around;
+}
+
+.result-container .result-wraper .result-item .item-desription ,
+.result-container .result-wraper .result-item .item-titel {
+  display: flex;
+  align-items: center;
+}
+
+.result-container .result-wraper .result-item .item-desription h3 ,
+.result-container .result-wraper .result-item .item-titel h3 {
+  font-size: 1.2rem;
+  color: #000;
+  padding: 1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.result-container .result-wraper .result-item .item-image {
+  width: 150px;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+}
+.result-container .result-wraper .result-item .item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+/**  new arival,  men, women, kids, sport, summer, winter, slipper socks, backback **/
+
+.backpack-container,
+.socks-container,
+.Slippers-container,
+.winter-container,
+.Sommer-container,
+.sports-container,
+.kids-container,
+.women-container,
+.men-container,
+.newArival-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.wraper-arrow {
+  top: 50%;
+  width: 99%;
+  height: 0px;
+  display: flex;
+  position: absolute;
+  transform: translateY(-50%);
+  justify-content: space-between;
+}
+
+.wraper-arrow .arrow-left ,
+.wraper-arrow .arrow-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:.3s ease;
+  cursor: pointer;
+  transition:.3s ease;
+}
+
+.wraper-arrow .arrow-left .material-symbols-outlined ,
+.wraper-arrow .arrow-right .material-symbols-outlined {
+  font-size: 2rem;
+  border: 2px solid #838080;
+  padding: 2rem 0rem;
+  border-radius: 999px;
+  color: #0ef;
+  background-color: #026077;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+  text-shadow: 10px 10px 30px rgba(209, 207, 207, 0.5);
+  transition: .3s ease;
+}
+
+.wraper-arrow .arrow-left .material-symbols-outlined:hover,
+.wraper-arrow .arrow-right .material-symbols-outlined:hover {
+  background-color: #009fc7;
+}
+
+.wraper-arrow .arrow-left .material-symbols-outlined:active,
+.wraper-arrow .arrow-right .material-symbols-outlined:active {
+  background-color: #00ccff;
+  transform: translateY(5px);
+}
+
+.contact-container h1,
+.about-container h1,
+.backpack-container h1,
+.socks-container h1,
+.Slippers-container h1,
+.winter-container h1,
+.Sommer-container h1,
+.sports-container h1,
+.kids-container h1,
+.women-container h1,
+.men-container h1,
+.newArival-container h1 {
+  font-size: 2rem;
+  background: linear-gradient(#0ef, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 1rem 0rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transform: translate(-100%);
+  transition: 1s ease;
+}
+
+/* Slide class */
+.contact-container h1.slide,
+.about-container h1.slide,
+.backpack-container h1.slide,
+.socks-container h1.slide,
+.Slippers-container h1.slide,
+.winter-container h1.slide,
+.Sommer-container h1.slide,
+.sports-container h1.slide,
+.kids-container h1.slide,
+.women-container h1.slide,
+.men-container h1.slide,
+.newArival-container h1.slide {
+  transform: translateX(0);
+}
+
+
+.backpack-container .backpack-wraper,
+.socks-container .socks-wraper,
+.Slippers-container .Slippers-wraper,
+.winter-container .winter-wraper,
+.Sommer-container .Sommer-wraper,
+.sports-container .sports-wraper,
+.kids-container .kids-wraper,
+.women-container .women-wraper,
+.men-container .men-wraper {
+  display: grid;
+  width: 93%;
+  height: 100%;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.newArival-container .newArival-wraper {
+  display: grid;
+  width: 93%;
+  height: 100%;
+  gap: 1rem;
+  overflow-x: hidden;
+  margin-bottom: 1rem;
+  white-space: nowrap;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+
+.backpack-container .backpack-wraper .backpack-item,
+.socks-container .socks-wraper .socks-item,
+.Slippers-container .Slippers-wraper .Slippers-item,
+.winter-container .winter-wraper .winter-item,
+.Sommer-container .Sommer-wraper .Sommer-item,
+.sports-container .sports-wraper .sports-item,
+.kids-container .kids-wraper .kids-item,
+.women-container .women-wraper .women-item,
+.men-container .men-wraper .men-item ,
+.newArival-container .newArival-wraper .newArival-item {
+  width: 300px;
+  height: 400px;
+  display: flex;
+  margin: 1rem 0;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 9px;
+  border: 2px solid #838080;
+  position: relative;
+  transition: .3s ease;
+}
+
+.contact-container .contact-wrapper .contact-item,
+.about-container .about-wrapper .about-item,
+.about-container .about-wrapper .about-item .about-text,
+.backpack-container .backpack-wraper .backpack-item,
+.socks-container .socks-wraper .socks-item,
+.Slippers-container .Slippers-wraper .Slippers-item,
+.winter-container .winter-wraper .winter-item,
+.Sommer-container .Sommer-wraper .Sommer-item,
+.sports-container .sports-wraper .sports-item,
+.kids-container .kids-wraper .kids-item,
+.women-container .women-wraper .women-item,
+.men-container .men-wraper .men-item ,
+.newArival-container .newArival-wraper .newArival-item {
+  transform: scale(0.4);
+  transition: transform 1s ease;
+}
+
+.contact-container .contact-wrapper .contact-item.first,
+.about-container .about-wrapper .about-item.first,
+.about-container .about-wrapper .about-item .about-text.first,
+.backpack-container .backpack-wraper .backpack-item.first,
+.socks-container .socks-wraper .socks-item.first,
+.Slippers-container .Slippers-wraper .Slippers-item.first,
+.winter-container .winter-wraper .winter-item.first,
+.Sommer-container .Sommer-wraper .Sommer-item.first,
+.sports-container .sports-wraper .sports-item.first,
+.kids-container .kids-wraper .kids-item.first,
+.women-container .women-wraper .women-item.first,
+.men-container .men-wraper .men-item.first,
+.newArival-container .newArival-wraper .newArival-item.first {
+  transform: scale(0.6);
+}
+
+.contact-container .contact-wrapper .contact-item.second,
+.about-container .about-wrapper .about-item.second,
+.about-container .about-wrapper .about-item .about-text.second,
+.backpack-container .backpack-wraper .backpack-item.second,
+.socks-container .socks-wraper .socks-item.second,
+.Slippers-container .Slippers-wraper .Slippers-item.second,
+.winter-container .winter-wraper .winter-item.second,
+.Sommer-container .Sommer-wraper .Sommer-item.second,
+.sports-container .sports-wraper .sports-item.second,
+.kids-container .kids-wraper .kids-item.second,
+.women-container .women-wraper .women-item.second,
+.men-container .men-wraper .men-item.second,
+.newArival-container .newArival-wraper .newArival-item.second {
+  transform: scale(0.8);
+}
+
+.contact-container .contact-wrapper .contact-item.third,
+.about-container .about-wrapper .about-item.third,
+.about-container .about-wrapper .about-item .about-text.third,
+.backpack-container .backpack-wraper .backpack-item.third,
+.socks-container .socks-wraper .socks-item.third,
+.Slippers-container .Slippers-wraper .Slippers-item.third,
+.winter-container .winter-wraper .winter-item.third,
+.Sommer-container .Sommer-wraper .Sommer-item.third,
+.sports-container .sports-wraper .sports-item.third,
+.kids-container .kids-wraper .kids-item.third,
+.women-container .women-wraper .women-item.third,
+.men-container .men-wraper .men-item.third,
+.newArival-container .newArival-wraper .newArival-item.third {
+  transform: scale(1);
+}
+
+
+.backpack-container .backpack-wraper .backpack-item:hover,
+.socks-container .socks-wraper .socks-item:hover,
+.Slippers-container .Slippers-wraper .Slippers-item:hover,
+.winter-container .winter-wraper .winter-item:hover,
+.Sommer-container .Sommer-wraper .Sommer-item:hover,
+.sports-container .sports-wraper .sports-item:hover,
+.kids-container .kids-wraper .kids-item:hover,
+.women-container .women-wraper .women-item:hover,
+.men-container .men-wraper .men-item:hover,
+.newArival-container .newArival-wraper .newArival-item:hover {
+  transform: scale(1.02);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-top,
+.socks-container .socks-wraper .socks-item .item-top,
+.Slippers-container .Slippers-wraper .Slippers-item .item-top,
+.winter-container .winter-wraper .winter-item .item-top,
+.Sommer-container .Sommer-wraper .Sommer-item .item-top,
+.sports-container .sports-wraper .sports-item .item-top,
+.kids-container .kids-wraper .kids-item .item-top,
+.women-container .women-wraper .women-item .item-top,
+.men-container .men-wraper .men-item .item-top,
+.newArival-container .newArival-wraper .newArival-item .item-top {
+  width: 90%;
+  display: flex;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-top .item-image,
+.socks-container .socks-wraper .socks-item .item-top .item-image,
+.Slippers-container .Slippers-wraper .Slippers-item .item-top .item-image,
+.winter-container .winter-wraper .winter-item .item-top .item-image,
+.Sommer-container .Sommer-wraper .Sommer-item .item-top .item-image,
+.sports-container .sports-wraper .sports-item .item-top .item-image,
+.kids-container .kids-wraper .kids-item .item-top .item-image,
+.women-container .women-wraper .women-item .item-top .item-image,
+.men-container .men-wraper .men-item .item-top .item-image,
+.newArival-container .newArival-wraper .newArival-item .item-top .item-image {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: center;
+  border: 2px solid #838080;
+  border-radius: 9px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-top .item-image img,
+.socks-container .socks-wraper .socks-item  .item-top .item-image img,
+.Slippers-container .Slippers-wraper .Slippers-item .item-top .item-image img,
+.winter-container .winter-wraper .winter-item .item-top .item-image img,
+.Sommer-container .Sommer-wraper .Sommer-item .item-top .item-image img,
+.sports-container .sports-wraper .sports-item .item-top .item-image img,
+.kids-container .kids-wraper .kids-item .item-top .item-image img,
+.women-container .women-wraper .women-item .item-top .item-image img,
+.men-container .men-wraper .men-item .item-top .item-image img,
+.newArival-container .newArival-wraper .newArival-item .item-top .item-image img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: transform 1s ease, perspective 1s ease;
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-top .item-image img:hover,
+.socks-container .socks-wraper .socks-item .item-top .item-image img:hover,
+.Slippers-container .Slippers-wraper .Slippers-item .item-top .item-image img:hover,
+.winter-container .winter-wraper .winter-item .item-top .item-image img:hover,
+.Sommer-container .Sommer-wraper .Sommer-item .item-top .item-image img:hover,
+.sports-container .sports-wraper .sports-item .item-top .item-image img:hover,
+.kids-container .kids-wraper .kids-item .item-top .item-image img:hover,
+.women-container .women-wraper .women-item .item-top .item-image img:hover,
+.men-container .men-wraper .men-item .item-top .item-image img:hover,
+.newArival-container .newArival-wraper .newArival-item .item-top .item-image img:hover {
+  transform: scale(1.5) rotateY(10deg) rotateX(10deg);
+  cursor: pointer;
+  perspective: 1000;
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-top .item-text-price,
+.socks-container .socks-wraper .socks-item .item-top .item-text-price,
+.Slippers-container .Slippers-wraper .Slippers-item .item-top .item-text-price,
+.winter-container .winter-wraper .winter-item .item-top .item-text-price,
+.Sommer-container .Sommer-wraper .Sommer-item .item-top .item-text-price,
+.sports-container .sports-wraper .sports-item .item-top .item-text-price,
+.kids-container .kids-wraper .kids-item .item-top .item-text-price,
+.women-container .women-wraper .women-item .item-top .item-text-price,
+.men-container .men-wraper .men-item .item-top .item-text-price,
+.newArival-container .newArival-wraper .newArival-item .item-top .item-text-price {
+  width: 100%;
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #838080;
+  border-radius: 9px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+.backpack-container .backpack-wraper .backpack-item .item-top .item-text-price p,
+.socks-container .socks-wraper .socks-item .item-top .item-text-price p,
+.Slippers-container .Slippers-wraper .Slippers-item .item-top .item-text-price p,
+.winter-container .winter-wraper .winter-item .item-top .item-text-price p,
+.Sommer-container .Sommer-wraper .Sommer-item .item-top .item-text-price p,
+.sports-container .sports-wraper .sports-item .item-top .item-text-price p,
+.kids-container .kids-wraper .kids-item .item-top .item-text-price p,
+.women-container .women-wraper .women-item .item-top .item-text-price p,
+.men-container .men-wraper .men-item .item-top .item-text-price p,
+.newArival-container .newArival-wraper .newArival-item .item-top .item-text-price p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 0.5rem;
+  background: linear-gradient(#ffb6c1, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-bottom,
+.socks-container .socks-wraper .socks-item .item-bottom,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom,
+.winter-container .winter-wraper .winter-item .item-bottom,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom,
+.sports-container .sports-wraper .sports-item .item-bottom,
+.kids-container .kids-wraper .kids-item .item-bottom,
+.women-container .women-wraper .women-item .item-bottom,
+.men-container .men-wraper .men-item .item-bottom,
+.newArival-container .newArival-wraper .newArival-item .item-bottom {
+  width: 95%;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-bottom .item-text-title,
+.socks-container .socks-wraper .socks-item .item-bottom .item-text-title,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom .item-text-title,
+.winter-container .winter-wraper .winter-item .item-bottom .item-text-title,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom .item-text-title,
+.sports-container .sports-wraper .sports-item .item-bottom .item-text-title,
+.kids-container .kids-wraper .kids-item .item-bottom .item-text-title,
+.women-container .women-wraper .women-item .item-bottom .item-text-title,
+.men-container .men-wraper .men-item .item-bottom .item-text-title,
+.newArival-container .newArival-wraper .newArival-item .item-bottom .item-text-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #838080;
+  border-radius: 9px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-bottom .item-text-title p,
+.socks-container .socks-wraper .socks-item .item-bottom .item-text-title p,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom .item-text-title p,
+.winter-container .winter-wraper .winter-item .item-bottom .item-text-title p,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom .item-text-title p,
+.sports-container .sports-wraper .sports-item .item-bottom .item-text-title p,
+.kids-container .kids-wraper .kids-item .item-bottom .item-text-title p,
+.women-container .women-wraper .women-item .item-bottom .item-text-title p,
+.men-container .men-wraper .men-item .item-bottom .item-text-title p,
+.newArival-container .newArival-wraper .newArival-item .item-bottom .item-text-title p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 0.5rem 0rem;
+  color: #026077;
+  text-transform: capitalize;
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-bottom .item-text-dots,
+.socks-container .socks-wraper .socks-item .item-bottom .item-text-dots,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom .item-text-dots,
+.winter-container .winter-wraper .winter-item .item-bottom .item-text-dots,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom .item-text-dots,
+.sports-container .sports-wraper .sports-item .item-bottom .item-text-dots,
+.kids-container .kids-wraper .kids-item .item-bottom .item-text-dots,
+.women-container .women-wraper .women-item .item-bottom .item-text-dots,
+.men-container .men-wraper .men-item .item-bottom .item-text-dots,
+.newArival-container .newArival-wraper .newArival-item .item-bottom .item-text-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #838080;
+  border-radius: 9px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-bottom .item-text-dots:active,
+.socks-container .socks-wraper .socks-item .item-bottom .item-text-dots:active,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom .item-text-dots:active,
+.winter-container .winter-wraper .winter-item .item-bottom .item-text-dots:active,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom .item-text-dots:active,
+.sports-container .sports-wraper .sports-item .item-bottom .item-text-dots:active,
+.kids-container .kids-wraper .kids-item .item-bottom .item-text-dots:active,
+.women-container .women-wraper .women-item .item-bottom .item-text-dots:active,
+.men-container .men-wraper .men-item .item-bottom .item-text-dots:active,
+.newArival-container .newArival-wraper .newArival-item .item-bottom .item-text-dots:active {
+  transform: translateY(5px);
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-bottom .item-text-dots .material-symbols-outlined,
+.socks-container .socks-wraper .socks-item .item-bottom .item-text-dots .material-symbols-outlined,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom .item-text-dots .material-symbols-outlined,
+.winter-container .winter-wraper .winter-item .item-bottom .item-text-dots .material-symbols-outlined,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom .item-text-dots .material-symbols-outlined,
+.sports-container .sports-wraper .sports-item .item-bottom .item-text-dots .material-symbols-outlined,
+.kids-container .kids-wraper .kids-item .item-bottom .item-text-dots .material-symbols-outlined,
+.women-container .women-wraper .women-item .item-bottom .item-text-dots .material-symbols-outlined,
+.men-container .men-wraper .men-item .item-bottom .item-text-dots .material-symbols-outlined,
+.newArival-container .newArival-wraper .newArival-item .item-bottom .item-text-dots .material-symbols-outlined {
+  font-size: 2rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(#0ef, #f00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button,
+.socks-container .socks-wraper .socks-item .item-bottom-button,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button,
+.winter-container .winter-wraper .winter-item .item-bottom-button,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button,
+.sports-container .sports-wraper .sports-item .item-bottom-button,
+.kids-container .kids-wraper .kids-item .item-bottom-button,
+.women-container .women-wraper .women-item .item-bottom-button,
+.men-container .men-wraper .men-item .item-bottom-button,
+.newArival-container .newArival-wraper .item-bottom-button {
+  position: absolute;
+  top: 4%;
+  left: 0.5%;
+  width: 260px;
+  display: none;
+  margin-left: 1rem;
+  align-items: center;
+  border-radius: 9px;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 1);
+  transition: .3s ease;
+  background-color: #009fc7;
+  transform: translateY(100%);
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button:hover,
+.socks-container .socks-wraper .socks-item .item-bottom-button:hover,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button:hover,
+.winter-container .winter-wraper .winter-item .item-bottom-button:hover,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button:hover,
+.sports-container .sports-wraper .sports-item .item-bottom-button:hover,
+.kids-container .kids-wraper .kids-item .item-bottom-button:hover,
+.women-container .women-wraper .women-item .item-bottom-button:hover,
+.men-container .men-wraper .men-item.item-bottom-button:hover,
+.newArival-container .newArival-wraper .item-bottom-button:hover {
+  cursor: pointer;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button.open,
+.socks-container .socks-wraper .socks-item .item-bottom-button.open,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button.open,
+.winter-container .winter-wraper .winter-item .item-bottom-button.open,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button.open,
+.sports-container .sports-wraper .sports-item .item-bottom-button.open,
+.kids-container .kids-wraper .kids-item .item-bottom-button.open,
+.women-container .women-wraper .women-item .item-bottom-button.open,
+.men-container .men-wraper .men-item .item-bottom-button.open,
+.newArival-container .newArival-wraper .item-bottom-button.open {
+  z-index: 100;
+  display: flex;
+  transform: translateY(0);
+}
+
+/************************** backpack *****************************/
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-wishlist,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-share,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .see-details,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-add-to-cart,
+
+/*************************** socks **************************/
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-wishlist,
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-share,
+.socks-container .socks-wraper .socks-item .item-bottom-button .see-details,
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-add-to-cart,
+
+/************************ slipper ******************************/
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-wishlist,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-share,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .see-details,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-add-to-cart,
+
+/*******************  winter ***********************************/
+.winter-container .winter-wraper .winter-item .item-bottom-button .item-wishlist,
+.winter-container .winter-wraper .winter-item .item-bottom-button .item-share,
+.winter-container .winter-wraper .winter-item .item-bottom-button .see-details,
+.winter-container .winter-wraper .winter-item .item-bottom-button .item-add-to-cart,
+
+/*********************** sommer **********************************/
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .item-wishlist,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .item-share,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .see-details,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .item-add-to-cart,
+
+/************************ sport ******************************/ 
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-wishlist,
+.sports-container .sports-wraper .sports-item .item-bottom-button .see-details,
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-share,
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-add-to-cart,
+
+/************************ kids ********************************/
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-wishlist,
+.kids-container .kids-wraper .kids-item .item-bottom-button .see-details,
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-share,
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-add-to-cart,
+
+/************************* women *****************************/
+.women-container .women-wraper .women-item .item-bottom-button .item-wishlist,
+.women-container .women-wraper .women-item .item-bottom-button .see-details,
+.women-container .women-wraper .women-item .item-bottom-button .item-share,
+.women-container .women-wraper .women-item .item-bottom-button .item-add-to-cart,
+
+/**************************** men **************************/
+.men-container .men-wraper .men-item .item-bottom-button .item-wishlist,
+.men-container .men-wraper .men-item .item-bottom-button .see-details,
+.men-container .men-wraper .men-item .item-bottom-button .item-share,
+.men-container .men-wraper .men-item .item-bottom-button .item-add-to-cart,
+
+/************************ new arrival **************************/
+.newArival-container .newArival-wraper .item-bottom-button .item-wishlist,
+.newArival-container .newArival-wraper .item-bottom-button .see-details,
+.newArival-container .newArival-wraper .item-bottom-button .item-share,
+.newArival-container .newArival-wraper .item-bottom-button .item-add-to-cart {
+  width: 90%;
+  display: flex;
+  margin: 0.5rem 0;
+  align-items: center;
+  justify-content: center;
+  background-color: #009fc7;
+  border-radius: 9px;
+  z-index: 100;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5)
+}
+
+
+
+/************************** backpack *****************************/
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-wishlist:hover,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-share:hover,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .see-details:hover,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-add-to-cart:hover,
+
+/*************************** socks **************************/
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-wishlist:hover,
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-share:hover,
+.socks-container .socks-wraper .socks-item .item-bottom-button .see-details:hover,
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-add-to-cart:hover,
+
+
+/************************ slipper ******************************/
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-wishlist:hover,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-share:hover,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .see-details:hover,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-add-to-cart:hover,
+
+
+/*************************** winter **************************/
+.winter-container .winter-wraper .item-bottom-button .item-wishlist:hover,
+.winter-container .winter-wraper .item-bottom-button .item-share:hover,
+.winter-container .winter-wraper .item-bottom-button .see-details:hover,
+.winter-container .winter-wraper .item-bottom-button .item-add-to-cart:hover,
+
+
+/*********************** sommer **********************************/
+.winter-container .winter-wraper .winter-item .item-bottom-button .item-wishlist:hover,
+.winter-container .winter-wraper .winter-item .item-bottom-button .item-share:hover,
+.winter-container .winter-wraper .winter-item .item-bottom-button .see-details:hover,
+.winter-container .winter-wraper .winter-item .item-bottom-button .item-add-to-cart:hover,
+
+/************************ sport *************************************/
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-wishlist:hover,
+.sports-container .sports-wraper .sports-item .item-bottom-button .see-details:hover,
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-share:hover,
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-add-to-cart:hover,
+
+/************************ kids ********************************/
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-wishlist:hover,
+.kids-container .kids-wraper .kids-item .item-bottom-button .see-details:hover,
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-share:hover,
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-add-to-cart:hover,
+
+/************************* women *****************************/
+.women-container .women-wraper .women-item .item-bottom-button .item-wishlist:hover,
+.women-container .women-wraper .women-item .item-bottom-button .see-details:hover,
+.women-container .women-wraper .women-item .item-bottom-button .item-share:hover,
+.women-container .women-wraper .women-item .item-bottom-button .item-add-to-cart:hover,
+
+/**************************** men **************************/
+.men-container .men-wraper .men-item .item-bottom-button .item-wishlist:hover,
+.men-container .men-wraper .men-item .item-bottom-button .see-details:hover,
+.men-container .men-wraper .men-item .item-bottom-button .item-share:hover,
+.men-container .men-wraper .men-item .item-bottom-button .item-add-to-cart:hover,
+
+/************************ new arrival **************************/
+.newArival-container .newArival-wraper .item-bottom-button .item-wishlist:hover,
+.newArival-container .newArival-wraper .item-bottom-button .see-details:hover,
+.newArival-container .newArival-wraper .item-bottom-button .item-share:hover,
+.newArival-container .newArival-wraper .item-bottom-button .item-add-to-cart:hover {
+  transform: scale(1.02);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/************************** backpack *****************************/
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-wishlist:active,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-share:active,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .see-details:active,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-add-to-cart:active,
+
+/*************************** socks **********************************/
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-wishlist:active,
+.socks-container .socks-wraper .socks-item .item-bottom-button .see-details:active,
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-share:active,
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-add-to-cart:active,
+
+/************************ slipper *************************************/
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-wishlist:active,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .see-details:active,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-share:active,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-add-to-cart:active,
+
+/*********************** winter **********************************/
+.winter-container .winter-wraper .winter-item  .item-bottom-button .item-wishlist:active,
+.winter-container .winter-wraper .winter-item  .item-bottom-button .see-details:active,
+.winter-container .winter-wraper .winter-item  .item-bottom-button .item-share:active,
+.winter-container .winter-wraper .winter-item  .item-bottom-button .item-add-to-cart:active,
+
+/*************************  sommer *****************************************/
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .item-wishlist:active,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .see-details:active,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .item-share:active,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .item-add-to-cart:active,
+
+/*************************  sport *****************************************/
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-wishlist:active,
+.sports-container .sports-wraper .sports-item .item-bottom-button .see-details:active,
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-share:active,
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-add-to-cart:active,
+
+/************************ kids ********************************/
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-wishlist:active,
+.kids-container .kids-wraper .kids-item .item-bottom-button .see-details:active,
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-share:active,
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-add-to-cart:active,
+
+/************************* women *****************************/
+.women-container .women-wraper .women-item .item-bottom-button .item-wishlist:active,
+.women-container .women-wraper .women-item .item-bottom-button .see-details:active,
+.women-container .women-wraper .women-item .item-bottom-button .item-share:active,
+.women-container .women-wraper .women-item .item-bottom-button .item-add-to-cart:active,
+
+/**************************** men **************************/
+.men-container .men-wraper .men-item .item-bottom-button .item-wishlist:active,
+.men-container .men-wraper .men-item .item-bottom-button .see-details:active,
+.men-container .men-wraper .men-item .item-bottom-button .item-share:active ,
+.men-container .men-wraper .men-item .item-bottom-button .item-add-to-cart:active,
+
+/************************ new arrival **************************/
+.newArival-container .newArival-wraper .item-bottom-button .item-wishlist:active,
+.newArival-container .newArival-wraper .item-bottom-button .see-details:active,
+.newArival-container .newArival-wraper .item-bottom-button .item-share:active ,
+.newArival-container .newArival-wraper .item-bottom-button .item-add-to-cart:active {
+  transform: scale(1.02);
+  cursor: pointer;
+  transform: translateY(5px);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/************************** backpack *****************************/
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-wishlist p,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-share p,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .see-details p,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-add-to-cart p,
+
+/*************************** socks **********************************/
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-wishlist p,
+.socks-container .socks-wraper .socks-item .item-bottom-button .see-details p,
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-share p,
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-add-to-cart p,
+
+/************************ slipper *************************************/
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-wishlist p,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .see-details p,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-share p,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-add-to-cart p,
+
+/*********************** winter **********************************/
+.winter-container .winter-wraper .winter-item  .item-bottom-button .item-wishlist p,
+.winter-container .winter-wraper .winter-item  .item-bottom-button .see-details p,
+.winter-container .winter-wraper .winter-item  .item-bottom-button .item-share p,
+.winter-container .winter-wraper .winter-item  .item-bottom-button .item-add-to-cart p,
+
+/*************************  sommer *****************************************/
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .item-wishlist p,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .see-details p,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .item-share p,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .item-add-to-cart p,
+
+/*************************  sport *****************************************/
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-wishlist p,
+.sports-container .sports-wraper .sports-item .item-bottom-button .see-details p,
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-share p,
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-add-to-cart p,
+
+/************************ kids ********************************/
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-wishlist p,
+.kids-container .kids-wraper .kids-item .item-bottom-button .see-details p,
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-share p,
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-add-to-cart p,
+
+/************************* women *****************************/
+.women-container .women-wraper .women-item .item-bottom-button .item-wishlist p,
+.women-container .women-wraper .women-item .item-bottom-button .see-details p,
+.women-container .women-wraper .women-item .item-bottom-button .item-share p,
+.women-container .women-wraper .women-item .item-bottom-button .item-add-to-cart p,
+
+/**************************** men **************************/
+.men-container .men-wraper .men-item .item-bottom-button .item-wishlist p,
+.men-container .men-wraper .men-item .item-bottom-button  .item-share  p,
+.men-container .men-wraper .men-item .item-bottom-button .see-details p,
+.men-container .men-wraper .men-item .item-bottom-button  .item-add-to-cart p,
+
+/************************ new arrival **************************/
+.newArival-container .newArival-wraper .item-bottom-button .item-wishlist p,
+.newArival-container .newArival-wraper .item-bottom-button .see-details p,
+.newArival-container .newArival-wraper .item-bottom-button .item-share p ,
+.newArival-container .newArival-wraper .item-bottom-button .item-add-to-cart p {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  padding: 0.5rem 0rem;
+  color: #000;
+  display: flex;
+  cursor: pointer;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+
+/*************************** backpack **********************************/
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .see-details a,
+
+/*************************** socks **********************************/
+.socks-container .socks-wraper .socks-item .item-bottom-button .see-details a,
+
+/*************************  slipper *****************************************/
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .see-details a,
+
+/*********************** winter **********************************/
+.winter-container .winter-wraper .winter-item  .item-bottom-button .see-details a,
+
+/*************************  sommer *****************************************/
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .see-details a,
+
+/*************************  sport *****************************************/
+.sports-container .sports-wraper .sports-item .item-bottom-button .see-details a,
+
+/************************ kids ********************************/
+.kids-container .kids-wraper .kids-item .item-bottom-button .see-details a,
+
+/************************ women ********************************/
+.women-container .women-wraper .women-item .item-bottom-button .see-details a,
+
+/**************************** men **************************/
+.men-container .men-wraper .men-item .item-bottom-button  .see-details a, 
+
+/************************ new arrival **************************/
+.newArival-container .newArival-wraper .item-bottom-button .see-details a {
+  text-decoration: none;
+}
+
+/*************************** backpack **********************************/
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-wishlist .material-symbols-outlined,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .see-details .material-symbols-outlined,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-share .material-symbols-outlined,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-add-to-cart .material-symbols-outlined,
+
+/*************************** socks **********************************/
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-wishlist .material-symbols-outlined,
+.socks-container .socks-wraper .socks-item .item-bottom-button .see-details .material-symbols-outlined,
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-share .material-symbols-outlined,
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-add-to-cart .material-symbols-outlined,
+
+/*************************  slipper *****************************************/
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-wishlist .material-symbols-outlined,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .see-details .material-symbols-outlined,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-share .material-symbols-outlined,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-add-to-cart .material-symbols-outlined,
+
+/*********************** winter **********************************/
+.winter-container .winter-wraper .winter-item  .item-bottom-button .item-wishlist .material-symbols-outlined,
+.winter-container .winter-wraper .winter-item  .item-bottom-button .see-details .material-symbols-outlined,
+.winter-container .winter-wraper .winter-item  .item-bottom-button .item-share .material-symbols-outlined,
+.winter-container .winter-wraper .winter-item  .item-bottom-button .item-add-to-cart .material-symbols-outlined,
+
+/*************************  sommer *****************************************/
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .item-wishlist .material-symbols-outlined,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .see-details .material-symbols-outlined,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .item-share .material-symbols-outlined,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .item-add-to-cart .material-symbols-outlined,
+
+/*************************  sport *****************************************/
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-wishlist .material-symbols-outlined,
+.sports-container .sports-wraper .sports-item .item-bottom-button .see-details .material-symbols-outlined,
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-share .material-symbols-outlined,
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-add-to-cart .material-symbols-outlined,
+
+/************************ kids *******************************/
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-wishlist .material-symbols-outlined,
+.kids-container .kids-wraper .kids-item .item-bottom-button .see-details .material-symbols-outlined,
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-share .material-symbols-outlined,
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-add-to-cart .material-symbols-outlined,
+
+/************************ women *****************************/
+.women-container .women-wraper .women-item .item-bottom-button .item-wishlist .material-symbols-outlined,
+.women-container .women-wraper .women-item .item-bottom-button .see-details .material-symbols-outlined,
+.women-container .women-wraper .women-item .item-bottom-button .item-share .material-symbols-outlined,
+.women-container .women-wraper .women-item .item-bottom-button .item-add-to-cart .material-symbols-outlined,
+
+/********************** men *****************************/
+.men-container .men-wraper .men-item .item-bottom-button .item-wishlist .material-symbols-outlined,
+.men-container .men-wraper .men-item .item-bottom-button  .see-details  .material-symbols-outlined,
+.men-container .men-wraper .men-item .item-bottom-button  .item-share  .material-symbols-outlined,
+.men-container .men-wraper .men-item .item-bottom-button  .item-add-to-cart .material-symbols-outlined,
+
+/********************** new arrival section ******************/
+.newArival-container .newArival-wraper .item-bottom-button .item-wishlist .material-symbols-outlined,
+.newArival-container .newArival-wraper .item-bottom-button .see-details .material-symbols-outlined,
+.newArival-container .newArival-wraper .item-bottom-button .item-share .material-symbols-outlined ,
+.newArival-container .newArival-wraper .item-bottom-button .item-add-to-cart .material-symbols-outlined {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  color: navy;
+  align-items: center;
+  transition: 0.5s ease;
+  justify-content: center;
+  transition: .3s ease;
+  padding: 0.25rem;
+
+}
+
+
+/*********************************  fevorite active ***********************************/
+.winter-container .winter-wraper .winter-item  .item-bottom-button .item-wishlist .material-symbols-outlined.active,
+.Slippers-container .Slippers-wraper .Slippers-item .item-bottom-button .item-wishlist .material-symbols-outlined.active,
+.backpack-container .backpack-wraper .backpack-item .item-bottom-button .item-wishlist .material-symbols-outlined.active,
+.socks-container .socks-wraper .socks-item .item-bottom-button .item-wishlist .material-symbols-outlined.active,
+.Sommer-container .Sommer-wraper .Sommer-item .item-bottom-button .item-wishlist .material-symbols-outlined.active,
+.sports-container .sports-wraper .sports-item .item-bottom-button .item-wishlist .material-symbols-outlined.active,
+.kids-container .kids-wraper .kids-item .item-bottom-button .item-wishlist .material-symbols-outlined.active,
+.women-container .women-wraper .women-item .item-bottom-button .item-wishlist .material-symbols-outlined.active,
+.men-container .men-wraper .men-item .item-bottom-button .item-wishlist .material-symbols-outlined.active,
+.newArival-container .newArival-wraper .item-bottom-button .item-wishlist .material-symbols-outlined.active  {
+  color: #fff;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  padding: 0.25rem;
+  transition: 0.5s ease;
+  justify-content: center;
+  background-color: #f02020;
+  justify-content: center;
+}
+
+
+
+/***************************** details section ********************/
+
+.product-detail-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow-x: hidden;
+  animation: slidToTop ease 1s;
+}
+
+
+@keyframes slidToTop {
+  0% {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+}
+
+.product-detail-container h2 {
+  font-size: 2rem;
+  background: linear-gradient(#0ef, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 1rem 0rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.product-detail-container .details-wraper {
+  width: 95%;
+  height: 100%;
+  display: grid;
+  margin-bottom: 2rem;
+}
+
+.product-detail-container .details-wraper .details-item {
+  gap: 2rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
+
+.product-detail-container .details-wraper .details-item .item-left {
+  width: 650px;
+  height: 650px;
+  border-radius: 9px;
+  border: 2px solid #838080;
+}
+
+.product-detail-container .details-wraper .details-item .item-left .item-images-grid {
+  display: grid;
+  padding: 1rem;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(5, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(5, 1fr));
+}
+
+.small-image1 {grid-column: 1; grid-row: 1; }
+.small-image2 { grid-column: 1; grid-row: 2; }
+.small-image3 { grid-column: 1; grid-row: 3; }
+.small-image4 { grid-column: 1; grid-row: 4; }
+.small-image5 { grid-column: 1; grid-row: 5; }
+.small-image6 { grid-column: 2; grid-row: 5; }
+.small-image7 { grid-column: 3; grid-row: 5; }
+.small-image8 { grid-column: 4; grid-row: 5; }
+.small-image9 { grid-column: 5; grid-row: 5; }
+.mainImage { grid-column: 2 / span 4; grid-row: 1 / span 4; }
+
+
+
+.product-detail-container .details-wraper .details-item .item-left .item-images-grid .mainImage {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  box-shadow: 10px 10px 30px rgb(0, 0, 0, 0.1);
+}
+
+.product-detail-container .details-wraper .details-item .item-left .item-images-grid .small-image {
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  box-shadow: 10px 10px 30px rgb(0, 0, 0, 0.1);
+  transition:  0.3s ease-in-out;
+}
+
+
+.product-detail-container .details-wraper .details-item .item-left .item-images-grid .small-image:hover {
+  transform: scale(1.02);
+}
+
+.product-detail-container .details-wraper .details-item .item-left .item-images-grid .small-image:active {
+  transform: translateY(5px);
+}
+
+
+
+.product-detail-container .details-wraper .details-item .item-right {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #838080;
+  border-radius: 9px;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .item-title {
+  display: flex;
+  margin: 1rem 1.5rem;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .item-title h3 {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: #000;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .item-type {
+  display: flex;
+  width: 200px;
+  margin: 1rem 1.5rem;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .item-type p {
+  font-size: 1rem;
+  margin-right: 1rem;
+  letter-spacing: 2px;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .item-price {
+  display: flex;
+  margin: 1rem 1.5rem;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .item-price h3 {
+  font-size: 1.5rem;
+  color: #000;
+  letter-spacing: 2px;
+  margin: 0.5rem 0;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .item-viriation {
+  display: flex;
+  width: 600px;
+  flex-direction: column;
+}
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant .variant-image-wraper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  margin: 1rem 0rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant .variant-image-wraper .image-item {
+  width: 150px;
+  height: 100px;
+  display: flex;
+  cursor: pointer;
+  border-radius: 9px;
+  margin: 0rem 0.5rem;
+  transition:.3s ease;
+  align-items: center;
+}
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant .variant-image-wraper .image-item img {
+  width: 130px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 9px;
+  transition:.3s ease;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant .variant-image-wraper .image-item:hover {
+  transform: scale(1.02);
+}
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant .variant-image-wraper .image-item:active {
+  transform: translateY(5px);
+}
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant .variant-size-wraper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  margin-bottom: 1rem;
+  align-items: center;
+  flex-direction: column;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant .variant-size-wraper .size-item  {
+  width: 100px;
+  height: 50px;
+  margin-bottom: 0.5rem;
+  border-radius: 9px;
+  align-items: center;
+  transition:.3s ease;
+  cursor: pointer;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant .variant-size-wraper .size-item p {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #000;
+}
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant .variant-size-wraper .size-item p.active {
+  background-color: rgb(2, 148, 153);
+}
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant .variant-size-wraper .size-item:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+  background-color: rgb(2, 148, 153);
+}
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant .variant-size-wraper .size-item:active {
+  transform: translateY(5px);
+}
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant .variant-quantity-wraper {
+  width: 500px;
+  height: 60px;
+  display: grid;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr;
+}
+
+.product-detail-container .details-wraper .details-item .item-right 
+.item-viriation .item-variant .variant-quantity-wraper p {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #000;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .add-to-cart ,
+.product-detail-container .details-wraper .details-item .item-right .item-wishlist {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0rem;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .add-to-cart p ,
+.product-detail-container .details-wraper .details-item .item-right .item-wishlist p {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: #000;
+  cursor: pointer;
+  transition:.3s ease;
+  border: 2px solid #838080;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.product-detail-container .details-wraper .details-item .item-right .add-to-cart p .material-symbols-outlined ,
+.product-detail-container .details-wraper .details-item .item-right .item-wishlist p .material-symbols-outlined {
+  font-size: 2rem;
+  margin-left: 1rem;
+  align-items: center;
+  transition:.3s ease;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .item-wishlist p .material-symbols-outlined.active {
+  background-color: #f02020;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 600;
+  padding: 0.2rem;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .add-to-cart p:hover ,
+.product-detail-container .details-wraper .details-item .item-right .item-wishlist p:hover {
+  color: #fff;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  transform: scale(1.02);
+}
+
+.product-detail-container .details-wraper .details-item .item-right .add-to-cart p:active,
+.product-detail-container .details-wraper .details-item .item-right .item-wishlist p:active {
+  transform: translateY(5px);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+  background-color: #fff;
+  color: #0ef;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .item-discription {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem 0rem;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .item-discription h2 {
+  display: flex;
+  width: 95%;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+}
+
+.product-detail-container .details-wraper .details-item .item-right .item-discription p {
+  display: flex;
+  width: 95%;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+
+/*************************** login , register section *************************/
+
+.login-register-container {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.login-form-container {
+  display: flex;
+  min-width: 550px;
+  margin-top: 2rem;
+  overflow: hidden;
+  min-height: 600px;
+  position: relative;
+  border-radius: 9px;
+  margin-bottom: 2rem;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 10px 10px 30px #000;
+}
+
+.login-form-container .login-register-switch-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form-container .login-register-switch-container h1 {
+  margin: 1rem 0;
+  cursor: pointer;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+}
+
+.error-message,
+.success-message {
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+  align-items: center;
+  letter-spacing: 2px;
+  justify-content: center;
+}
+
+.active.error-message {
+  color: red;
+}
+
+.active.success-message {
+  color: green;
+}
+
+.login-form-container form {
+  width: 90%;
+  margin: 5rem 0;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.login-form-container form .rember-forget,
+.login-form-container form .form-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.login-form-container form .form-group label {
+  width: 100%;
+  display: flex;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin-bottom: 0.2rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.login-form-container form .form-group input {
+  width: 100%;
+  border: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  padding-right: 2rem;
+  padding: 0.5rem 2rem;
+  border-radius: 999px;
+  letter-spacing: 2px;
+  background-color: transparent;
+  border-bottom: 2px solid #524f4f;
+}
+
+
+.login-form-container form .form-group input::placeholder {
+  color: #524f4f;
+}
+
+.login-form-container form .form-group input:focus {
+  border-bottom: 2px solid #0ef;
+}
+
+.login-form-container form .form-group .material-symbols-outlined {
+  top: 50%;
+  right: 10px;
+  font-size: 1.8rem;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+.login-form-container form .show-hide-password {
+  top: 55%;
+  left: 40px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.login-form-container form .show-hide-password .material-symbols-outlined {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.login-form-container form  .show-hide-password:hover {
+  color: #524f4f;
+}
+
+.login-form-container form .show-hide-password:active {
+  transform: translateY(5px);
+}
+
+
+.login-form-container form .rember-forget-container {
+  width: 100%;
+  display: flex;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-form-container form .rember,
+.login-form-container form .forget {
+  display: flex;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  align-items: center;
+}
+
+.login-form-container form .rember input {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.login-form-container form .rember-forget-container a {
+  color: #000;
+  transition:.3s ease;
+}
+
+.login-form-container form .rember-forget-container .forget a:hover {
+  color: #505050;
+  text-decoration: underline;
+}
+
+.login-form-container form  .submit-button {
+  display: flex;
+  margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form-container form .submit-button button {
+  width: 200px;
+  border: none;
+  color: #000;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  letter-spacing: 3px;
+  border-radius: 999px;
+  padding: 0.5rem 2rem;
+  border: 2px solid #524f4f;
+  background-color: transparent;
+  transition:.3s ease;
+}
+
+.login-form-container form .submit-button button:hover {
+  background-color: #32b767;
+  color: #fff;
+}
+
+.login-form-container form .submit-button button:active {
+  transform: translateY(5px);
+}
+
+.login-form-container form .submit-button button:focus {
+  outline: none;
+}
+
+.login-form-container .register-login-switch-container {
+  width: 550px;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  padding: 1rem 0;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #00ccff;
+  border-top-right-radius: 990px;
+  border-top-left-radius: 990px;
+  box-shadow: 0 -15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.login-form-container .register-login-switch-container h1 {
+  color: #fff;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
+.register-container {
+  width: 550px;
+  display: none;
+  margin-top: 1rem;
+  position: absolute;
+  border-radius: 9px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #00ccff;
+  transform: translateY(100%);
+  box-shadow: 5px 5px 30px rgb(0, 0, 0, 0.5);
+}
+
+.register-container.slide {
+  display: flex;
+  transition: .5s ease;
+  transform: translateY(0);
+}
+
+.register-container form {
+  width: 90%;
+  padding: 1.5rem 0;
+  margin-top: 1rem;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register-container form .form-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register-container form .form-group .first-name-and-last-name,
+.register-container form .form-group .email-and-phone,
+.register-container form .form-group .password-and-confirm-password {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.register-container form .form-group .first-name-and-last-name .first-name,
+.register-container form .form-group .first-name-and-last-name .last-name,
+.register-container form .form-group .email-and-phone .email,
+.register-container form .form-group .email-and-phone .phone,
+.register-container form .form-group .password-and-confirm-password .password,
+.register-container form .form-group .password-and-confirm-password .confirm-password {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.register-container form .form-group .first-name-and-last-name .first-name label,
+.register-container form .form-group .first-name-and-last-name .last-name label,
+.register-container form .form-group .email-and-phone .email label,
+.register-container form .form-group .email-and-phone .phone label,
+.register-container form .form-group .password-and-confirm-password .password label,
+.register-container form .form-group .password-and-confirm-password .confirm-password label {
+  color: #000;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+.register-container form .form-group .first-name-and-last-name .first-name input ,
+.register-container form .form-group .first-name-and-last-name .last-name input ,
+.register-container form .form-group .email-and-phone .email input ,
+.register-container form .form-group .email-and-phone .phone input ,
+.register-container form .form-group .password-and-confirm-password .password input ,
+.register-container form .form-group .password-and-confirm-password .confirm-password input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  background-color: transparent;
+  border-bottom: 2px solid #524f4f;
+}
+
+.register-container form .form-group .first-name-and-last-name .first-name input:focus ,
+.register-container form .form-group .first-name-and-last-name .last-name input:focus ,
+.register-container form .form-group .email-and-phone .email input:focus ,
+.register-container form .form-group .email-and-phone .phone input:focus ,
+.register-container form .form-group .password-and-confirm-password .password input:focus ,
+.register-container form .form-group .password-and-confirm-password .confirm-password input:focus {
+  width: 300px;
+  border-bottom: 2px solid #0ef;
+}
+
+.register-container form .form-group .first-name-and-last-name .material-symbols-outlined,
+.register-container form .form-group .email-and-phone .material-symbols-outlined,
+.register-container form .form-group .password-and-confirm-password .material-symbols-outlined{
+  top: 50%;
+  right: 5px;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+
+.register-container form .form-group .password-and-confirm-password .password .show-hide-password .material-symbols-outlined,
+.register-container form .form-group .password-and-confirm-password .confirm-password .show-hide-password .material-symbols-outlined {
+  top: 50%;
+  left: 5px;
+  width: 25px;
+  cursor: pointer;
+  position: absolute;
+  transform: translateY(-50%);
+  transition: .3s ease;
+}
+
+.register-container form .form-group .password-and-confirm-password .password .show-hide-password .material-symbols-outlined:hover,
+.register-container form .form-group .password-and-confirm-password .confirm-password .show-hide-password .material-symbols-outlined:hover {
+  color: #524f4f;
+}
+
+.register-container form .form-group .password-and-confirm-password .password .show-hide-password .material-symbols-outlined:active,
+.register-container form .form-group .password-and-confirm-password .confirm-password .show-hide-password .material-symbols-outlined:active {
+  color: #524f4f;
+  transform: translateY(1px);
+}
+
+.register-container form .form-group .terms-and-conditions {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.register-container form .form-group .terms-and-conditions label {
+  color: #000;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+.register-container form .form-group .terms-and-conditions input {
+  width: 15px;
+  height: 15px;
+  margin-right: 1rem;
+}
+
+.register-container form .submit-button {
+  width: 100%;
+  display: flex;
+  margin-top: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  justify-content: center;
+}
+
+.register-container form .submit-button button {
+  color: #000;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  border-radius: 999px;
+  padding: 0.5rem 2rem;
+  transition:.3s ease;
+  cursor: pointer;
+  border: 2px solid #524f4f;
+  background-color: transparent;
+}
+
+.register-container form .submit-button button:hover {
+  background-color: #32b767;
+  color: #fff;
+}
+
+.register-container form .submit-button button:active {
+  transform: translateY(5px);
+}
+
+.register-container form .submit-button button:focus {
+  outline: none;
+}
+
+
+/************************* forgot password and resset  ****************************/
+
+.reset-password-container,
+.forgot-password-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.reset-password-container h2,
+.forgot-password-container h2 {
+  width: 100%;
+  display: flex;
+  font-size: 2rem;
+  margin: 2rem 0;
+  letter-spacing: 2px;
+  justify-content: center;
+}
+
+.reset-password-container form,
+.forgot-password-container form {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 9px;
+  box-shadow: 10px 10px 30px #000;
+}
+
+.reset-password-container form .form-control,
+.forgot-password-container form .form-control {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.reset-password-container form .form-control label,
+.forgot-password-container form .form-control label {
+  color: #000;
+  display: flex;
+  width: 100%;
+  margin: 1rem 0;
+  align-items: flex-start;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+.reset-password-container form .form-control label,
+.reset-password-container form .form-control input{
+  margin: 0.5rem 0;
+}
+
+
+.reset-password-container form .form-control input,
+.forgot-password-container form .form-control input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  padding: 0.5rem 2rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  border-bottom: 2px solid #524f4f;
+  background-color: transparent;
+}
+
+.reset-password-container form .form-control .material-symbols-outlined,
+.forgot-password-container form .form-control .material-symbols-outlined {
+  top: 60%;
+  right: 5px;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+.reset-password-container form .form-control .show-hide-password .material-symbols-outlined {
+  top: 60%;
+  left: 5px;
+  width: 25px;
+  cursor: pointer;
+  position: absolute;
+  transform: translateY(-50%);
+  transition:.3s ease;
+}
+
+.reset-password-container form .form-control .show-hide-password .material-symbols-outlined:hover,
+.forgot-password-container form .form-control .show-hide-password .material-symbols-outlined:hover {
+  color: #524f4f;
+}
+
+.reset-password-container form .form-control .show-hide-password .material-symbols-outlined:active,
+.forgot-password-container form .form-control .show-hide-password .material-symbols-outlined:active {
+  color: #524f4f;
+  transform: translateY(1px);
+}
+
+
+.reset-password-container form .form-control input:focus,
+.forgot-password-container form .form-control input:focus {
+  border-bottom: 2px solid #0ef;
+}
+
+.reset-password-container form .submit-button,
+.forgot-password-container form .submit-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.reset-password-container form .submit-button button,
+.forgot-password-container form .submit-button button {
+  color: #000;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  border-radius: 999px;
+  padding: 0.5rem 2rem;
+  transition:.3s ease;
+  cursor: pointer;
+  border: 2px solid #524f4f;
+  background-color: transparent;
+}
+
+.reset-password-container form .submit-button button:hover,
+.forgot-password-container form .submit-button button:hover {
+  background-color: #32b767;
+  color: #fff;
+}
+
+.reset-password-container form .submit-button button:active,
+.forgot-password-container form .submit-button button:active {
+  transform: translateY(5px);
+}
+
+.reset-password-container form .submit-button button:focus,
+.forgot-password-container form .submit-button button:focus {
+  outline: none;
+}
+
+.back-to-login {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.back-to-login a {
+  color: #000;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  border-radius: 999px;
+  padding: 0.5rem 2rem;
+  transition:.3s ease;
+  cursor: pointer;
+  border: 2px solid #524f4f;
+  background-color: transparent;
+}
+
+.back-to-login a:hover {
+  background-color: #32b767;
+  color: #fff;
+}
+
+.back-to-login a:active {
+  transform: translateY(5px);
+}
+
+
+
+/************************ cart section *********************************/
+
+
+.cartItem-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cartItem-container h1 {
+  width: 100%;
+  display: flex;
+  font-size: 2rem;
+  margin: 1rem 0;
+  justify-content: center;
+  background: linear-gradient(#0ef,#000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cartItem-container .cartItem-header {
+  display: flex;
+  width: 95%;
+  gap: 1rem;
+}
+
+.cartItem-container .cartItem-Wrapper {
+  width: 70%;
+  gap: 1rem;
+  display: flex;
+  margin: 1rem 0;
+  flex-direction: column;
+}
+
+.cartItem-container .cartItem-Wrapper .cart-empty {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  justify-content: center;
+}
+
+.cartItem-container .cartItem-Wrapper .cartItem-item {
+  display: flex;
+  width: 100%;
+  margin: 1rem 0rem;
+  border-top: 1px solid #838080;
+  border-bottom: 1px solid #838080;
+  grid-template-columns: 1fr 1fr;
+}
+
+.cartItem-container .cartItem-Wrapper .cartItem-item  .item-image {
+  width: 350px;
+  height: 200px;
+  margin: 1rem 0.5rem;
+  justify-content: center;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.cartItem-container .cartItem-Wrapper .cartItem-item  .item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 1rem;
+}
+
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description {
+  display: grid;
+  width: 100%;
+  margin: 1rem 0.5rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-title,
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-size,
+ .cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-price,
+ .cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-delete,
+ .cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-wishlist,
+ .cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-quantity {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin: 0.2rem 0rem;
+  background-color: rgb(156, 155, 155, 0.1);
+}
+
+
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-title p,
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-size p,
+ .cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-price p,
+ .cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-wishlist p,
+ .cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-delete p,
+ .cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-quantity p {
+  color: #000;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-delete .material-symbols-outlined,
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-wishlist .material-symbols-outlined,
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-quantity .material-symbols-outlined{
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: .3s ease;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-delete .material-symbols-outlined:hover,
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-wishlist .material-symbols-outlined:hover,
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-quantity .material-symbols-outlined:hover {
+  color: #026077;
+}
+
+
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-delete .material-symbols-outlined:active,
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-wishlist .material-symbols-outlined:active,
+.cartItem-container .cartItem-Wrapper .cartItem-item .item-description .item-quantity .material-symbols-outlined:active {
+  transform: translateY(3px);
+}
+
+
+.cartItem-container  .cartItem-header .total-container {
+  width: 30%;
+  right: 10px;
+  height: 300px;
+  display: flex;
+  position: fixed;
+  margin-top: 2rem;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(156, 155, 155, 0.3);
+}
+
+.cartItem-container .cartItem-header  .total-container h2 {
+  width: 100%;
+  display: flex;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+  background: linear-gradient(#000,#0ef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 3px;
+}
+
+.cartItem-container  .cartItem-header .total-container .total-wraper {
+  gap: 1rem;
+  width: 95%;
+  display: flex;
+  margin-top: 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cartItem-container  .cartItem-header .total-container .total-wraper .total-item {
+  display: flex;
+  width: 100%;
+  margin: 1rem 0rem;
+  flex-direction: column;
+}
+
+.cartItem-container  .cartItem-header .total-container .total-wraper .total-item .total-quantity,
+.cartItem-container  .cartItem-header .total-container .total-wraper .total-item .total-price {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin: 0.5rem 0rem;
+  background-color: rgb(156, 155, 155, 0.3);
+}
+
+.cartItem-container  .cartItem-header .total-container .total-wraper .total-item .total-quantity p,
+.cartItem-container  .cartItem-header .total-container .total-wraper .total-item .total-price p {
+  color: #000;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  padding: 0.5rem;
+}
+
+.cartItem-container  .cartItem-header .total-container .total-wraper .total-item .checkout  {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cartItem-container  .cartItem-header .total-container .total-wraper .total-item .checkout a p {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 2px solid #838080;
+  transition: .3s ease;
+}
+
+
+.cartItem-container  .cartItem-header .total-container .total-wraper .total-item .checkout  a {
+  text-decoration: none;
+  background: linear-gradient(#000, #0ef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: .3s ease;
+}
+
+.cartItem-container  .cartItem-header .total-container .total-wraper .total-item .checkout  a:hover {
+  transform: scale(1.02);
+}
+
+.cartItem-container  .cartItem-header .total-container .total-wraper .total-item .checkout  a:active {
+  transform: translateY(3px);
+}
+
+.total-container .back-to-home {
+  display: flex;
+  cursor: pointer;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.total-container .back-to-home a {
+  color: #000;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  border-radius: 999px;
+  transition: .3s ease;
+  border: 2px solid #838080;
+  background-color: transparent;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.total-container .back-to-home a:hover {
+  transform: scale(1.02);
+}
+
+.total-container .back-to-home a:active {
+  transform: translateY(3px);
+}
+
+/************************ about section **************************/
+
+.about-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-container h1 {
+  font-size: 2rem;
+  letter-spacing: 3px;
+  text-align: center;
+  background: linear-gradient(#0ef, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 1rem 0rem;
+  text-transform: uppercase;
+}
+
+.about-container .about-wrapper {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.about-container .about-wrapper .about-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-container .about-wrapper .about-item .about-image {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-container .about-wrapper .about-item .about-image img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: 1s ease;
+  mix-blend-mode: multiply;
+}
+
+.about-container .about-wrapper .about-item .about-image img:hover {
+  transform: scale(1.1) rotateY(10deg) rotateX(10deg);
+  cursor: pointer;
+  perspective: 1000;
+}
+
+
+.about-container .about-wrapper .about-item .about-text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.about-container .about-wrapper .about-item .about-text p {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin: 2rem 0rem;
+  line-height: 1.5;
+  background: linear-gradient( #213a57, #009fc7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/************************ contact section **************************/
+
+.contact-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  margin-bottom: 5rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-container h1 {
+  font-size: 2rem;
+  letter-spacing: 3px;
+  text-align: center;
+  background: linear-gradient(#0ef, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 2rem 0rem;
+  text-transform: uppercase;
+}
+
+.contact-container .contact-wrapper {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-container .contact-wrapper .contact-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin-top: 2rem;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.contact-container .contact-wrapper .contact-item .item-left {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  border-radius: 9px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 10px 10px 30px #000;
+}
+
+.contact-container .contact-wrapper .contact-item .item-left form {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contact-container .contact-wrapper .contact-item .item-left form .form-control {
+  width: 100%;
+  border: none;
+  padding: 1rem;
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contact-container .contact-wrapper .contact-item .item-left form .form-control label {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin: 0.5rem 0rem;
+}
+
+.contact-container .contact-wrapper .contact-item .item-left form .form-control input {
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid #000;
+  background-color: transparent;
+}
+
+.contact-container .contact-wrapper .contact-item .item-left form .form-control input::placeholder {
+  color: #838080;
+}
+
+.contact-container .contact-wrapper .contact-item .item-left form .form-control input:focus {
+  border-bottom: 2px solid #0ef;
+}
+
+.contact-container .contact-wrapper .contact-item .item-left form .form-control textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border-bottom: 2px solid #000;
+  background-color: transparent;
+  resize: none;
+}
+
+.contact-container .contact-wrapper .contact-item .item-left form .form-control textarea::placeholder {
+  color: #838080;
+}
+
+.contact-container .contact-wrapper .contact-item .item-left form .form-control textarea:focus {
+  border-bottom: 2px solid #0ef;
+}
+
+.contact-container .contact-wrapper .contact-item .item-left form .form-control button {
+  width: 100%;
+  border: none;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  background: linear-gradient(#0ef, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition:.3s ease;
+  cursor: pointer;
+  border: 2px solid #838080;
+}
+
+.contact-container .contact-wrapper .contact-item .item-left form .form-control button:hover {
+  transform: scale(1.02);
+}
+
+.contact-container .contact-wrapper .contact-item .item-left form .form-control button:active {
+  transform: translateY(3px);
+}
+
+.contact-container .contact-wrapper .contact-item .item-right {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-container .contact-wrapper .contact-item .item-right .map {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-container .contact-wrapper .contact-item .item-right .map iframe {
+  width: 100%;
+  height: 450px;
+}
+
+
+/**********************************  footer **********************/
+
+
+.footer-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-container .footer-wraper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin-top: 5rem;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-shadow: 10px 10px 30px rgb(0, 0, 0, 0.1);
+  box-shadow: 10px 10px 10px 10px rgb(0, 0, 0, 0.5);
+}
+
+.footer-container .footer-wraper .wraper-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: 2rem 0rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-container .footer-wraper .wraper-item .item-title {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-container .footer-wraper .wraper-item .item-title h1 {
+  font-size: 2rem;
+  letter-spacing: 3px;
+  text-align: center;
+  margin: 1rem 0rem;
+  text-transform: uppercase;
+  background: linear-gradient(#000, #0ef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-container .footer-wraper .wraper-item form {
+  display: flex;
+  width: 600px;
+  height: 45px;
+  align-items: center;
+  border-radius: 999px;
+  justify-content: center;
+  border: 1px solid #213a57;
+  background-color: transparent;
+  box-shadow: 10px 10px 30px rgb(0, 0, 0, 0.5);
+}
+
+.footer-container .footer-wraper .wraper-item form input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+}
+
+.footer-container .footer-wraper .wraper-item form button{
+  height: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #45dfb1;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background-color: #213a57;
+  box-shadow: 10px 10px 30px rgb(0, 0, 0, 0.5);
+  transition:.3s ease;
+}
+
+.footer-container .footer-wraper .wraper-item form button:hover {
+  transform: scale(1.05);
+}
+
+.footer-container .footer-wraper .wraper-item form  {
+  transform: scale(1.02);
+}
+
+.footer-container .footer-wraper .footer-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: 1rem 0rem;
+  padding: 1rem 0rem;
+  justify-content: space-around;
+}
+
+.footer-container .footer-wraper .footer-item .footer-item-item {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.footer-container .footer-wraper .footer-item .footer-item-item  h2 {
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.footer-container .footer-wraper .footer-item .footer-item-item p {
+  font-size: 1rem;
+  letter-spacing: 3px;
+  text-align: center;
+  margin: 0.5rem 0rem;
+}
+
+.footer-container .footer-wraper .footer-item .footer-item-item .social-media-icons {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+}
+
+.footer-container .footer-wraper .footer-item .footer-item-item .social-media-icons a img {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  margin: 0rem 1rem;
+  align-items: center;
+  transition:.3s ease;
+  justify-content: center;
+}
+
+.footer-container .footer-wraper .footer-item .footer-item-item .social-media-icons a img:hover {
+  transform: scale(1.3);
+}
+
+.footer-container .footer-wraper .copy-right {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer-container .footer-wraper .copy-right-top {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: 0.5rem 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-container .footer-wraper .copy-right-top p {
+  font-size: 1rem;
+  letter-spacing: 3px;
+  color: #524f4f;
+}
+
+.footer-container .footer-wraper .copy-right .copy-right-button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.footer-container .footer-wraper .copy-right-buttom p {
+  font-size: 1rem;
+  letter-spacing: 3px;
+  transition:.3s ease;
+  color: #524f4f;
+}
+
+.footer-container .footer-wraper .copy-right-buttom p a {
+  text-decoration: none;
+}
+
+.footer-container .arrow-up {
+  position: fixed;
+  right: 20px;
+  bottom: 200px;
+}
+
+.footer-container .arrow-up .material-symbols-outlined {
+  font-size: 3rem;
+  cursor: pointer;
+  transition:.3s ease;
+  color: #00ccff;
+  z-index: 1000;
+  animation: up-and-down .5s infinite linear;
+}
+
+@keyframes up-and-down {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.footer-container .arrow-up .material-symbols-outlined:hover {
+  transform: scale(1.1);
+  color: #0ef;
+}
+
+.footer-container .arrow-up .material-symbols-outlined:active {
+  color: #e0f;
+}
+
+
+
+/*************************** chackout page ***************************/
+
+.checkout-order-container {
+  width: 100%;
+  display: flex;
+  min-height: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.checkout-order-container h1 {
+  font-size: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.checkout-order-container .checkout-wrapper {
+  display: flex;
+  margin: 1rem 0;
+  padding: 2rem;
+  border-radius: 9px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 10px 10px 30px #000;
+}
+
+.checkout-order-container .checkout-wrapper form {
+  width: 100%;
+  display: flex;
+  margin: 1rem 0;
+  flex-direction: column;
+}
+
+.checkout-order-container .checkout-wrapper form .form-control {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-order-container .checkout-wrapper form .form-control .fristName-and-lastName,
+.checkout-order-container .checkout-wrapper form .form-control .email-and-phone,
+.checkout-order-container .checkout-wrapper form .form-control .adress-and-house-number,
+.checkout-order-container .checkout-wrapper form .form-control  .city-and-postal-code,
+.checkout-order-container .checkout-wrapper form .form-control  .country-dropDown-and-remberMe {
+  display: flex;
+  gap: 3rem;
+}
+
+.checkout-order-container .checkout-wrapper form .form-control .fristName-and-lastName .fristName,
+.checkout-order-container .checkout-wrapper form .form-control .fristName-and-lastName .lastName,
+.checkout-order-container .checkout-wrapper form .form-control .email-and-phone .email,
+.checkout-order-container .checkout-wrapper form .form-control .email-and-phone .phone,
+.checkout-order-container .checkout-wrapper form .form-control .adress-and-house-number .adress,
+.checkout-order-container .checkout-wrapper form .form-control .adress-and-house-number .house-number,
+.checkout-order-container .checkout-wrapper form .form-control  .city-and-postal-code .city,
+.checkout-order-container .checkout-wrapper form .form-control  .city-and-postal-code .postal-code {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+
+.checkout-order-container .checkout-wrapper form .form-control .adress-and-house-number .house-number input {
+  width: 150px;
+  bottom: none;
+  font-size: 1rem;
+  padding: 10px 5px;
+  letter-spacing: 2px;
+  border: 2px solid #4e4c4c;
+  background-color: transparent;
+}
+
+
+.checkout-order-container .checkout-wrapper form .form-control label {
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  color: #000;
+  margin: 1rem 0;
+}
+
+.checkout-order-container .checkout-wrapper form .form-control .fristName-and-lastName .fristName input,
+.checkout-order-container .checkout-wrapper form .form-control .fristName-and-lastName .lastName input,
+.checkout-order-container .checkout-wrapper form .form-control .email-and-phone .email input,
+.checkout-order-container .checkout-wrapper form .form-control .email-and-phone .phone input,
+.checkout-order-container .checkout-wrapper form .form-control .adress-and-house-number .adress input,
+.checkout-order-container .checkout-wrapper form .form-control  .city-and-postal-code .city input ,
+.checkout-order-container .checkout-wrapper form .form-control  .city-and-postal-code .postal-code input {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #000;
+  font-size: 1.2rem;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border-bottom: 2px solid #838080;
+}
+
+.checkout-order-container .checkout-wrapper form .form-control .fristName-and-lastName .fristName input::placeholder,
+.checkout-order-container .checkout-wrapper form .form-control .fristName-and-lastName .lastName input::placeholder,
+.checkout-order-container .checkout-wrapper form .form-control .email-and-phone .email input::placeholder,
+.checkout-order-container .checkout-wrapper form .form-control .email-and-phone .phone input::placeholder,
+.checkout-order-container .checkout-wrapper form .form-control .adress-and-house-number .adress input::placeholder,
+.checkout-order-container .checkout-wrapper form .form-control  .city-and-postal-code .city input ::placeholder,
+.checkout-order-container .checkout-wrapper form .form-control  .city-and-postal-code .postal-code input::placeholder {
+  letter-spacing: 3px;
+  color: #4e4c4c;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+}
+
+.checkout-order-container .checkout-wrapper form .form-control  .country-dropDown-and-remberMe .remberMe {
+  width: 100%;
+  display: flex;
+  margin: 1rem 0;
+  align-items: center;
+}
+.checkout-order-container .checkout-wrapper form .form-control  .country-dropDown-and-remberMe .remberMe input {
+  margin-right: 0.5rem;
+  width: 20px;
+  height: 20px;
+}
+
+.checkout-order-container .checkout-wrapper form .form-control  .country-dropDown-and-remberMe .country-dropDown {
+  display: flex;
+  width: 100%;
+  margin: 1rem 0;
+  align-items: center;
+}
+
+.checkout-order-container .checkout-wrapper form .form-control  .country-dropDown-and-remberMe .country-dropDown select {
+  width: 150px;
+  height: 40px;
+  background-color: transparent;
+}
+
+.checkout-order-container form .form-control .button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-order-container form .form-control .button button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  padding: 0.5rem 2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  border: 2px solid #524f4f;
+  background-color: transparent;
+  color: #000;
+  transition: 0.3s ease;
+}
+
+.checkout-order-container form .form-control .button button:hover {
+  background-color: #32b767;
+  color: #fff;
+}
+
+.checkout-order-container form .form-control .button button:active {
+  transform: translateY(3px);
+}
+
+.checkout-order-container .back-to-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+ .back-to-cart a {
+  color: #000;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  text-decoration: none;
+  border: 2px solid #524f4f;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  transition: 0.3s ease;
+  font-weight: 600;
+}
+
+ .back-to-cart a:hover {
+  background-color: #32b767;
+  color: #fff;
+}
+
+.back-to-cart a:active {
+  transform: translateY(3px);
+}
+
+/************************* payment page ***********************/
+
+
+.payment-container {
+  width: 100%;
+  min-height: 135vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.payment-container h1 {
+  font-size: 2rem;
+  letter-spacing: 3px;
+  color: #000;
+  margin: 2rem 0;
+}
+
+.payment-container .exceptedpayment-method {
+  display: flex;
+  width: 500px;
+  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+}
+
+.payment-container .exceptedpayment-method .payment-method {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-container .exceptedpayment-method .payment-method label {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  color: #524f4f;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.payment-container .exceptedpayment-method .payment-method label span {
+  font-size: 2rem;
+  color: #000;
+}
+
+.payment-container .exceptedpayment-method .payment-method input[type="radio"] {
+  margin-right: 0.5rem;
+  width: 20px;
+  height: 20px;
+}
+
+.payment-container .payment-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 600px;
+  margin-bottom: 2rem;
+  box-shadow: 10px 10px 30px #000;
+  padding: 2rem;
+  padding: 2rem;
+  border-radius: 9px;
+}
+
+.payment-container .payment-wrapper form {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+}
+
+.payment-container .payment-wrapper form .form-control {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.payment-container .payment-wrapper form .form-control .expirationDate-and-cvv {
+  display: flex;
+  width: 100%;
+  gap: 3rem;
+}
+
+.payment-container .payment-wrapper form .form-control label {
+  display: flex;
+  align-items: center;
+  color: #524f4f;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.payment-container .payment-wrapper form .form-control input {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #000;
+  font-size: 1.2rem;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-bottom: 2px solid #838080;
+}
+
+.payment-container .payment-wrapper form .form-control input::placeholder {
+  letter-spacing: 3px;
+  color: #4e4c4c;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+}
+
+.cvv {
+  position: relative;
+}
+
+.tooltip-icon {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.tooltip-text {
+  width: 300px;
+  color: #fff;
+  padding: 5px 0;
+  z-index: 1;
+  left: 50%;
+  opacity: 0;
+  top: -60%;
+  transform: translate(-50%);
+  position: absolute;
+  visibility: hidden;
+  border-radius: 6px;
+  text-align: center;
+  transition: opacity 0.3s;
+  background-color: black;
+}
+
+.tooltip-icon:hover + .tooltip-text,
+.tooltip-text:hover {
+  visibility: visible;
+  opacity: 1;
+}
+
+.payment-container .payment-wrapper form .form-control .button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.payment-container .payment-wrapper form .form-control .button button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  padding: 0.5rem 2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  border: 2px solid #524f4f;
+  background-color: transparent;
+  color: #000;
+  transition: 0.3s ease;
+}
+
+.payment-container .payment-wrapper form .form-control .button button:hover {
+  background-color: #32b767;
+  color: #fff;
+}
+
+.payment-container .payment-wrapper form .form-control .button button:active {
+  transform: translateY(3px);
+}
